@@ -28,12 +28,12 @@ export const AppContextProvider = (props) => {
 
   const fetchUserData = async () => {
     try {
-      if (user.publicMetadata.role === "seller") {
+      if (user?.publicMetadata?.role === "seller") {
         setIsSeller(true);
       }
 
       const token = await getToken();
-
+      console.log("TOKEN", token);
       const { data } = await axios.get("/api/user/data", {
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -100,8 +100,10 @@ export const AppContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    if (user) {
+      fetchUserData();
+    }
+  }, [user]);
 
   const value = {
     user,
