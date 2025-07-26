@@ -6,9 +6,7 @@ import {
   syncUserUpdation,
 } from "@/config/inngest";
 
-const handler = serve({
+export const { GET, POST } = serve({
   client: inngest,
   functions: [syncUserCreation, syncUserUpdation, syncUserDeletion],
 });
-
-export default handler;
