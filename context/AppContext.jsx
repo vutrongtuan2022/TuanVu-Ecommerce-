@@ -43,14 +43,14 @@ export const AppContextProvider = (props) => {
         setCartItems(data.user.cartItems);
       } else {
         toast.error(data.message);
-        setUserData(userDummyData); // ✅ Chỉ set dummy nếu thất bại
+        setUserData(userDummyData);
       }
     } catch (error) {
       toast.error(
         error?.response?.data?.message ||
           error.message ||
           "Lỗi khi lấy dữ liệu người dùng"
-      ); // ✅ Đã sửa lỗi tại đây
+      );
     }
   };
 
